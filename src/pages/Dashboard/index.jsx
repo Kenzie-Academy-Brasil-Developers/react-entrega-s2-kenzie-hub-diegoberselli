@@ -3,11 +3,11 @@ import Card from "../../components/Card";
 import Header from "../../components/Header";
 import { Redirect } from "react-router-dom";
 import { useState } from "react";
-import ModalPost from "../../components/ModalPost";
+import ModalPost from "../../components/ModalFirst";
 import api from "../../services/api";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import ModalPut from "../../components/ModalPut";
+import ModalPut from "../../components/ModalSecond";
 
 const Dashboard = ({ auth, setAuth }) => {
   const [modalPost, setModalPost] = useState(false);
