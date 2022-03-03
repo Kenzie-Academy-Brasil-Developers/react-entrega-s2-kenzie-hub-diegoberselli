@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import ModalPut from "../../components/ModalSecond";
 
-const Dashboard = ({ auth, setAuth }) => {
+const Dashboard = ({ authenticated, setAuthenticated }) => {
   const [modalPost, setModalPost] = useState(false);
   const [modalPut, setModalPut] = useState(false);
   const [itemToChange, setItemToChange] = useState("");
@@ -17,7 +17,7 @@ const Dashboard = ({ auth, setAuth }) => {
   const [techList, setTechList] = useState([]);
 
   useEffect(() => {
-    if (auth) {
+    if (authenticated) {
       api
         .get(`https://kenziehub.herokuapp.com/users/${user.id}`)
         .then((response) => setTechList(response.data.techs))
@@ -29,7 +29,7 @@ const Dashboard = ({ auth, setAuth }) => {
     setModalPost(true);
   };
 
-  if (!auth) {
+  if (!authenticated) {
     return <Redirect to="/login" />;
   }
 
@@ -41,7 +41,7 @@ const Dashboard = ({ auth, setAuth }) => {
       transition={{ duration: 2.5 }}
     >
       <Container>
-        <Header setAuth={setAuth} />
+        <Header setAuth={setAuthenticated} />
         <section>
           <h1>Olá, {user.name}</h1>
           <p>{user.course_module}</p>

@@ -9,7 +9,7 @@ import api from "../../services/api";
 import { toast } from "react-toastify";
 import { Redirect } from "react-router-dom";
 
-const Register = ({ auth }) => {
+const Register = ({ authenticated}) => {
   const history = useHistory();
 
   const schema = yup.object().shape({
@@ -47,7 +47,7 @@ const Register = ({ auth }) => {
       });
   };
 
-  if (auth) {
+  if (authenticated) {
     return <Redirect to="/dashboard" />;
   }
 

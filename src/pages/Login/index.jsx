@@ -8,7 +8,7 @@ import api from "../../services/api";
 import { toast } from "react-toastify";
 import { Redirect } from "react-router-dom";
 
-const Login = ({ setAuth, auth }) => {
+const Login = ({ setAuthenticated, authenticated }) => {
   const history = useHistory();
 
   const {
@@ -30,7 +30,7 @@ const Login = ({ setAuth, auth }) => {
           "@kenzieHub:user",
           JSON.stringify(response.data.user)
         );
-        setAuth(true);
+        setAuthenticated(true);
         return history.push("/dashboard");
       })
       .catch((err) => {
@@ -39,7 +39,7 @@ const Login = ({ setAuth, auth }) => {
       });
   };
 
-  if (auth) {
+  if (authenticated) {
     return <Redirect to="/dashboard" />;
   }
 

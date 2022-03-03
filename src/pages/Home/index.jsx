@@ -4,7 +4,7 @@ import HomeDiv from "./styles";
 import Button from "../../components/Button";
 import { motion } from "framer-motion";
 
-const Home = ({ auth }) => {
+const Home = ({ authenticated }) => {
   const history = useHistory();
 
   function toLogin() {
@@ -15,7 +15,7 @@ const Home = ({ auth }) => {
     history.push("/register");
   }
 
-  if (auth) {
+  if (authenticated) {
     return <Redirect to="/dashboard" />;
   }
 

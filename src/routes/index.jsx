@@ -8,30 +8,30 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const Routes = () => {
-  const [auth, setAuth] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("@kenzieHub:token"));
 
     if (token) {
-      return setAuth(true);
+      return setAuthenticated(true);
     }
-  }, [auth]);
+  }, [authenticated]);
 
   return (
     <AnimatePresence>
       <Switch>
         <Route exact path="/">
-          <Home auth={auth} />
+          <Home authenticated={authenticated} />
         </Route>
         <Route path="/register">
-          <Register auth={auth} />
+          <Register authenticated={authenticated} />
         </Route>
         <Route path="/login">
-          <Login auth={auth} setAuth={setAuth} />
+          <Login authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
         <Route path="/dashboard">
-          <Dashboard auth={auth} setAuth={setAuth} />
+          <Dashboard authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
       </Switch>
     </AnimatePresence>
